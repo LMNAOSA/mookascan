@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+:root {
+  --mb-black: #0a0a0a;
+  --mb-ink: #141210;
+  --mb-sand: #d6c9b7;
+  --mb-gold: #c9a66b;
+  --mb-bone: #f2f0eb;
+  --mb-muted: #9a9288;
+  --mb-line: rgba(242, 240, 235, 0.09);
+  --mb-teal: #6aa7a1;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--mb-black); }
+body {
+  margin: 0;
+  background: var(--mb-black);
+  color: var(--mb-bone);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button, input, textarea, select { font: inherit; }
+
+::selection { background: rgba(201,166,107,.35); color: #fff; }
+
+.mb-grain {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(201,166,107,.05), transparent 28%),
+    radial-gradient(circle at 80% 10%, rgba(106,167,161,.04), transparent 24%),
+    linear-gradient(180deg, rgba(255,255,255,.01), transparent 38%);
+}
+
+.mb-panel {
+  border: 1px solid var(--mb-line);
+  background: rgba(20, 18, 16, .74);
+  box-shadow: 0 20px 60px rgba(0,0,0,.28);
+}
+
+.mb-label {
+  color: var(--mb-muted);
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.mb-display {
+  letter-spacing: -.04em;
+  font-weight: 500;
+}
