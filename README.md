@@ -166,3 +166,7 @@ The Project page includes Jony Ive and Amaar Reshi as **aspirational leadership 
 ## Next technical layer
 
 The natural next build after v0.1 is not blockchain. It is a reliable photogrammetry processing service that can take the preserved source image set, run one or more real reconstruction engines, store processing metadata and create model versions automatically.
+
+## Vercel dependency note
+
+React and React Three Fiber are intentionally pinned in `package.json` because the current Fiber 9.7.x release requires React `>=19 <19.3`. Do not change the React dependencies back to `latest` without checking the Fiber peer range first.
