@@ -29,14 +29,18 @@ export async function createStoneAction(formData: FormData) {
   const { data: stone, error } = await supabase.from('stones').insert(payload).select('*').single();
   if (error || !stone) return { ok: false as const, error: error?.message || 'Could not create the stone.' };
 
-  const { data: captureSession, error: captureError } = await supabase.from('capture_sessions').insert({
-    stone_id: stone.id,
-    captured_by: user.id,
-    device: String(formData.get('device') || '').trim() || null,
-    notes: String(formData.get('capture_notes') || '').trim() || null,
-    processing_status: 'not_processed',
-    image_count: 0,
-  });
+  const { data: captureSession, error: captureError } = await supabase
+    .from('capture_sessions')
+    .insert({
+      stone_id: stone.id,
+      captured_by: user.id,
+      device: String(formData.get('device') || '').trim() || null,
+      notes: String(formData.get('capture_notes') || '').trim() || null,
+      processing_status: 'not_processed',
+      image_count: 0,
+    })
+    .select('id')
+    .single();
 
   if (captureError) return { ok: false as const, error: captureError.message };
 
